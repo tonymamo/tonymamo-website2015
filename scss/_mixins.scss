@@ -1,0 +1,39 @@
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model; // Safari <= 5
+     -moz-box-sizing: $box-model; // Firefox <= 19
+          box-sizing: $box-model;
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+@mixin text-shadow($x, $y, $blur, $color, $alpha) {
+	text-shadow: $x $y $blur rgba($color, $alpha);
+}
+
+@mixin transition($transition-property: all, $transition-time: 0.2s, $method: linear) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+// Horizontal List Abstraction
+.horizontal-list {
+    list-style: none;
+    margin-left: 0;
+	& > li,
+    & > li > a {
+       	display: inline-block;
+   	   	*display: inline;
+        zoom: 1;
+    }
+}
+
+.align-center {
+	text-align: center;
+}
